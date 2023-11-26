@@ -1,4 +1,3 @@
-import { CSSProperties } from "react";
 import styles from "./skills.module.scss";
 import Image from "next/image";
 import Card from "@/app/components/card/card";

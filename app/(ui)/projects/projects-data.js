@@ -31,7 +31,7 @@ export const projectsData = [
     name: "This website :)                                                            ",
     description:
       "Crafted this personal website using Next.js and Framer Motion, showcasing an innovative blend of cutting-edge technologies. Leveraged Next.js for efficient, React applications, ensuring optimal performance and a seamless user experience. Implemented Framer Motion to add fluid animations, enhancing the overall visual appeal of the website. The project exemplifies the intersection of creativity and technology, offering a dynamic and engaging platform to showcase personal achievements and insights.",
-    tech: ["NextJS", "Framer Motion"],
+    tech: ["NextJS", "Framer-Motion"],
     year: "Dec 2023",
   },
 ];

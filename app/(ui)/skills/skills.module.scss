@@ -1,0 +1,50 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.last {
+  margin-top: 20px;
+}
+
+.title {
+  text-align: center;
+  text-decoration: overline;
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: 1.8vh;
+}
+
+.skillContainer {
+  margin-top: 4px;
+  display: flex;
+  gap: 10px;
+}
+
+.level {
+  color: rgb(157, 157, 157);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  justify-items: center;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

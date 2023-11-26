@@ -1,0 +1,73 @@
+.page_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    font-family: "Satoshi-Bold", sans-serif;
+    font-size: 4vh;
+    margin-bottom: 8vh;
+  }
+  .content {
+    margin-left: 8vw;
+    margin-right: 8vw;
+  }
+  .description,
+  .subTitle {
+    font-size: 3vh;
+    margin-bottom: 10vh;
+  }
+
+  .subTitle {
+    color: rgb(157, 157, 157);
+    margin-bottom: 5vh;
+  }
+}
+.listItem {
+  font-family: "Satoshi-Bold";
+  font-size: 10vh;
+}
+
+.arrow {
+  margin-left: 6vh;
+  margin-top: 6vh;
+}
+
+.page_home {
+  height: 91vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh;
+  p {
+    font-size: 3vh;
+  }
+}
+
+.main_image {
+  height: 70vh;
+  width: 50vh;
+  margin-bottom: 10vh;
+  border-radius: 10px;
+}
+
+.back_link {
+  margin-left: 6vh;
+  margin-top: 6vh;
+  font-size: 2.5vh;
+  color: rgb(157, 157, 157);
+}
+
+@media screen and (max-width: 600px) {
+  .page_main {
+    padding: 2vh;
+  }
+  .page_home {
+    padding: 2vh;
+  }
+  .content {
+    margin: 0;
+  }
+  .listItem {
+    font-size: 5vh !important;
+  }
+}

@@ -1,0 +1,27 @@
+.navbar {
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  padding-top: 40px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2.5vh;
+}
+.linkItems {
+  display: flex;
+  gap: 30px;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    padding-top: 25px;
+    font-size: 1.7vh;
+  }
+  .linkItems {
+    gap: 10px;
+  }
+}

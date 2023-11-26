@@ -1,0 +1,50 @@
+.link {
+  text-decoration: none;
+  color: black;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: max-content;
+}
+
+.link::before,
+.link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.link::before {
+  background-color: black;
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.link::after {
+  content: attr(data-center);
+  height: 100%;
+  top: 0;
+  transform-origin: 100% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: attr(s-color);
+}
+
+.link:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+.link:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.link span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.link:hover span {
+  transform: translate3d(-200%, 0, 0);
+}

@@ -1,0 +1,63 @@
+.proj_h {
+  position: relative;
+  height: 200vh;
+}
+
+.container {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cards {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  position: relative;
+  background: white;
+  box-shadow: -1px 8px 15px rgba(0, 0, 0, 0.2);
+  padding: 3vh;
+  text-align: justify;
+  text-justify: justify;
+  width: 40vw;
+  height: 40vh;
+}
+
+.tech {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 5px;
+  color: rgb(157, 157, 157);
+}
+
+.year {
+  margin-left: auto;
+  color: #565656;
+  font-family: "Satoshi-Bold";
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  white-space: break-spaces;
+}
+
+.description {
+  margin-top: 15px;
+  color: #565656;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 70vw;
+  }
+  .tech {
+    width: 70vw;
+  }
+}

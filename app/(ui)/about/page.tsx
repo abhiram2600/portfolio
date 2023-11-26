@@ -39,9 +39,9 @@ export default function Page() {
             US.
           </p>
           <Image
-            src={"/images/about_main.jpg"}
-            width={3024}
-            height={4032}
+            src={"/images/about_main.png"}
+            width={700}
+            height={700}
             alt={"Profile Image"}
             className={styles.main_image}
           />

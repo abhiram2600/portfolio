@@ -20,10 +20,6 @@ export default function ProjectCard({ index }: ProjectCardProps) {
         </div>
         <p className={styles.description}>{description}</p>
       </div>
-      {/* <div className={styles.bottom}>
-        {}
-        <p style={{ textAlign: "center" }}>dat 2023</p>
-      </div> */}
     </div>
   );
 }

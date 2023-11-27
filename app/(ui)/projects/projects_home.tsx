@@ -11,7 +11,7 @@ export default function ProjectsHome() {
     target: s_ref,
   });
   const y_s = useSpring(scrollYProgress, { mass: 0.1 });
-  const x = useTransform(y_s, [0, 1], ["1%", "-80%"]);
+  const x = useTransform(y_s, [0, 1], ["1%", "-83%"]);
 
   const { ref } = useNav({ mode: "title-change", title: "Projects" });
   return (

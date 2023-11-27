@@ -16,8 +16,8 @@ export default function ProjectCard({ index }: ProjectCardProps) {
           {tech.map((item, idx) => {
             return <p key={item + idx}>{item}</p>;
           })}
-          <p className={styles.year}>{year}</p>
         </div>
+        <p className={styles.year}>{year}</p>
         <p className={styles.description}>{description}</p>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useNav } from "@/app/hooks/useNav";
 import AnimatedDiv from "../animated_div/animated_div";
 import styles from "./about.module.scss";
 
-export const AboutHome = () => {
+export default function AboutHome() {
   const { ref } = useNav({ mode: "title-change", title: "About Me" });
   return (
     <div ref={ref} id={"about"}>
@@ -21,4 +21,4 @@ export const AboutHome = () => {
       </AnimatedDiv>
     </div>
   );
-};
+}

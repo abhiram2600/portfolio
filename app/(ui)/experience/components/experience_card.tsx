@@ -15,7 +15,7 @@ export default function ExperinceCard({ experienceData }: ExperienceCardProps) {
         className={styles.date}
       >{`${experienceData.from} - ${experienceData.to}`}</p>
       {experienceData.dutiesPerformed.map((duty) => {
-        return <p className={styles.duty}>{`- ${duty}`}</p>;
+        return <p className={styles.duty} key={duty}>{`- ${duty}`}</p>;
       })}
     </div>
   );

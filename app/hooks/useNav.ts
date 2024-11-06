@@ -18,6 +18,7 @@ export const useNav = ({
   const ref = useRef<any>();
   const isInView = useInView(ref, { amount: amount });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (isInView) {
       if (mode === "color-change" || mode === "both") {

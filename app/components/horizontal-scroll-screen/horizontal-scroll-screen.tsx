@@ -1,3 +1,4 @@
+"use client";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import styles from "./horizontal-scroll-screen.module.scss";
 import { RefObject, forwardRef } from "react";
@@ -10,7 +11,7 @@ interface HorizontalScrollScreenProps {
 export const HorizontalScrollScreen = forwardRef<
   HTMLDivElement,
   HorizontalScrollScreenProps
->(function ({ children, end }, ref) {
+>(function HorizontalScrollScreen({ children, end }, ref) {
   const { scrollYProgress } = useScroll({
     target: ref as RefObject<HTMLElement>,
   });
@@ -24,3 +25,5 @@ export const HorizontalScrollScreen = forwardRef<
     </div>
   );
 });
+
+HorizontalScrollScreen.displayName = "HorizontalScrollScreen";

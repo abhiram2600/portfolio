@@ -4,7 +4,7 @@ import Contact from "./(ui)/contact/contact";
 import Homepage from "./(ui)/homepage/homepage";
 import Navbar from "./(ui)/navbar/navbar";
 import { GlobalContext } from "@/app/context/GlobalContext";
-import { AboutHome } from "./(ui)/about/about_home";
+import About from "./(ui)/about/about";
 import Projects from "./(ui)/projects/projects";
 import Skills from "./(ui)/skills/skills";
 import Experience from "./(ui)/experience/experience";
@@ -19,7 +19,7 @@ export default function Home() {
     >
       <Navbar />
       <Homepage />
-      <AboutHome />
+      <About />
       <Experience />
       <Projects />
       <Skills />

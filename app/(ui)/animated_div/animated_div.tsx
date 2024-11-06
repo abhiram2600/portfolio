@@ -23,7 +23,6 @@ export default function AnimatedDiv({ children, ...props }: AnimDivProps) {
       whileInView={"visible"}
       exit={"exit"}
       viewport={{ amount: 0.5, once: true }}
-      style={{}}
       {...props}
     >
       {children}

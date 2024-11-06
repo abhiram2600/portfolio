@@ -1,14 +1,13 @@
-import { CSSProperties } from "react";
+import { CSSProperties, ComponentProps } from "react";
 import styles from "./card.module.scss";
 
-interface CardProps {
+interface CardProps extends ComponentProps<"div"> {
   children: React.ReactNode;
-  style?: CSSProperties;
 }
 
-export default function Card({ children, style }: CardProps) {
+export default function Card({ children, ...props }: CardProps) {
   return (
-    <div className={styles.card} style={style}>
+    <div className={styles.card} {...props}>
       {children}
     </div>
   );

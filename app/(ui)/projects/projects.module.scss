@@ -21,11 +21,11 @@
   position: relative;
   background: white;
   box-shadow: -1px 8px 15px rgba(0, 0, 0, 0.2);
-  padding: 3vh;
+  padding: 3vh 3vh 10vh 3vh;
   text-align: justify;
   text-justify: justify;
   width: 40vw;
-  height: 40vh;
+  //height: 40vh;
 }
 
 .tech {
@@ -55,7 +55,7 @@
 @media screen and (max-width: 600px) {
   .card {
     width: 80vw;
-    height: 65vh;
+    //height: 65vh;
   }
   .tech {
     width: 70vw;

@@ -5,8 +5,9 @@ import { useContext } from "react";
 import ALink from "../animated_link/animated_link";
 
 const links = [
-  { name: "About", href: "/about" },
+  { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 

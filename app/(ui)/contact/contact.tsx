@@ -76,7 +76,7 @@ export default function Contact() {
             );
           })}
         </div>
-        <p className={styles.copyright}>&copy; 2023 Abhiram Kasturi</p>
+        <p className={styles.copyright}>&copy; 2024 Abhiram Kasturi</p>
       </div>
     </div>
   );

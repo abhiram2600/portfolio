@@ -14,13 +14,9 @@
   margin-bottom: 20px;
 }
 
-.last {
-  margin-top: 20px;
-}
-
 .title {
   text-align: center;
-  text-decoration: overline;
+  text-decoration: underline;
   font-family: "Satoshi-Bold", sans-serif;
   font-size: 1.8vh;
 }
@@ -39,8 +35,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 10px;
-  justify-items: center;
-  align-items: center;
+  gap: 10px;
 }
 
 @media (max-width: 767px) {

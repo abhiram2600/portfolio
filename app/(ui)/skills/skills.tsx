@@ -3,13 +3,14 @@ import Image from "next/image";
 import Card from "@/app/components/card/card";
 import { useNav } from "@/app/hooks/useNav";
 import { skillsData } from "./skills-data.js";
+import { CSSProperties } from "react";
 
 function IndividualCard({ index }: { index: number }) {
   const { ref } = useNav({ mode: "title-change", title: "Skills" });
   const data = skillsData[index];
   return (
     <div ref={ref}>
-      <Card>
+      <Card style={{ padding: "2vh" }}>
         <p className={styles.title}>{data.name}</p>
         <div className={styles.skillsGrid}>
           {data.skills.map((skill, idx) => {

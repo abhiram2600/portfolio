@@ -1,15 +1,22 @@
 export const projectsData = [
   {
+    name: "Surfsense - Chrome extension to track time spent on website.",
+    description:
+      "Created a Chrome extension to monitor internet usage, distinguishing between productive and non-productive website time. \nUtilized Chrome APIs alongside HTML and JavaScript for the development of the application",
+    tech: ["HTML5", "CSS", "JavaScript", "ChromeAPI"],
+    year: "May 2024",
+  },
+  {
     name: "Unhealthy Tree Detection through Video Stream Segmentation",
     description:
-      "Utilizing PyTorch and OpenCV, I applied advanced computer vision algorithms and deep learning models to segment video streams, achieving pixel-level precision in identifying unhealthy trees. Integrating techniques such as semantic segmentation and object detection, the project established a state-of-the-art approach for accurately assessing tree health in drone-captured footage.",
+      "Developed and implemented machine learning models (Logistic Regression and Convolutional Neural Network) for segmenting and detecting unhealthy trees in drone footage, enhancing automated environmental monitoring capabilities.",
     tech: ["Pytorch", "OpenCV"],
     year: "Nov 2023",
   },
   {
     name: "Platform migration to AWS",
     description:
-      "Executed a robust AWS migration project, configuring access permissions, building compliant networks, and ensuring scalability to accommodate a doubling of servers. Prioritized security for sensitive medical data, implemented load balancers, and established a resilient architecture for high availability and continuity. Integrated auditing mechanisms to track and monitor all user actions, ensuring a secure and accountable environment.",
+      "Architected and executed the migration of Tigermed's on-premise infrastructure to AWS, leveraging VPC, EC2, RDS, and Auto Scaling for enhanced scalability and security.\n Designed a multi-AZ deployment with secure, highly available cloud services and integrated monitoring through CloudWatch",
     tech: ["AWS"],
     year: "Sept 2023",
   },

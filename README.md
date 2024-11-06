@@ -1,5 +1,5 @@
-### My Personal Website
+# My Personal Website
 
-# Designed and developed by me.
+## Designed and developed by me.
 
-# Tech Stack - NextJS, SCSS, Frame motion
+## Tech Stack - NextJS, SCSS, Frame motion

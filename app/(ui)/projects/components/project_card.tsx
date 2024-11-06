@@ -1,13 +1,13 @@
 "use client";
-import { projectsData } from "../projects-data";
+import { projectDataType } from "../projects-data";
 import styles from "../projects.module.scss";
 
 interface ProjectCardProps {
-  index: number;
+  projectData: projectDataType[number];
 }
 
-export default function ProjectCard({ index }: ProjectCardProps) {
-  const { name, description, tech, year } = projectsData[index];
+export default function ProjectCard({ projectData }: ProjectCardProps) {
+  const { name, description, tech, year } = projectData;
   return (
     <div className={styles.card}>
       <div className={styles.text}>

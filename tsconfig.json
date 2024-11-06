@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "app/(ui)/page.js",
     "app/(ui)/skills/skills-data.js",
-    "app/(ui)/projects/projects-data.js"
+    "app/(ui)/projects/projects-data.ts"
   ],
   "exclude": ["node_modules"]
 }

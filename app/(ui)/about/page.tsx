@@ -47,60 +47,54 @@ export default function Page() {
           />
           <div className={styles.content}>
             <AnimatedPara className={styles.description}>
-              I am a dedicated Web and Mobile Developer based in the United
-              States, bringing forth a background with 1.5 years of hands-on
-              experience in the realm of Software Development. My journey is
-              fueled by a passion for learning and the pursuit of perfectio.. As
-              a current Master's student in Computer Science at Clemson
-              University, I find myself deeply immersed in the academic
-              exploration of cutting-edge technologies and methodologies. My
-              focus is particularly towards Web Development, Data Science.
+              I'm a committed full-stack software engineer in the United States.
+              I have 1.5 years of hands-on experience in software development
+              and am driven by my love for learning and striving for perfection.
+              Currently pursuing a Master's in Computer Science at Clemson
+              University, I'm deeply engaged in exploring the latest
+              technologies and methods, with a specific interest in web
+              development and data science.
             </AnimatedPara>
 
             <AnimatedPara className={styles.description}>
-              My relentless pursuit of knowledge is complemented by a commitment
-              to perfection in design, driven by an unwavering dedication to
-              crafting exceptional user experiences. Beyond academia, my
-              professional aspirations are geared towards contributing
-              innovative solutions and leveraging my skills in a full-time role.
-              I am <b>actively seeking opportunities</b> where I can apply my
-              expertise, drive meaningful innovation, and embark on a fulfilling
-              journey of impactful contributions within the tech industry.
+              I'm constantly learning and striving for perfection in design,
+              aiming to create outstanding user experiences with dedication.
+              Outside of academia, I'm focused on contributing innovative
+              solutions and using my skills in a full-time position. I'm
+              <b>actively looking</b> for opportunities to apply my expertise,
+              drive innovation, and make meaningful contributions in the tech
+              industry.
             </AnimatedPara>
 
             <AnimatedDiv>
               <p className={styles.subTitle}>My work as Software Engineer</p>
               <p className={styles.description}>
-                In the early months of 2021, I commenced my professional
-                journey, stepping into the realm of software development as a
-                passionate and driven individual. Embarking on this path, I took
-                on the role of a Software Engineering Intern, delving into the
-                intricacies of technology with a focus on React JS, React
-                Native, and Firebase. This immersive internship experience
-                served as the foundation for my subsequent endeavors in the
-                dynamic world of software engineering.
+                In early 2021, I began my professional journey in software
+                development with enthusiasm and determination. I started as a
+                Software Engineering Intern, focusing on React JS, React Native,
+                and Firebase to learn about technology intricacies. This
+                internship laid the groundwork for my future work in the
+                fast-paced field of software engineering.
               </p>
             </AnimatedDiv>
 
             <AnimatedPara className={styles.description}>
-              During the initial six months, I navigated through the challenges
-              and triumphs of crafting applications that seamlessly blended
-              innovation and user-centric design. My primary focus was on
-              building robust and scalable apps for various companies,
-              contributing to their digital presence and functionality.
+              In the first six months, I dealt with both challenges and
+              successes while creating applications that combined innovation and
+              user-friendly design seamlessly. My main goal was to develop
+              strong and scalable apps for different companies, enhancing their
+              digital presence and functionality.
             </AnimatedPara>
             <AnimatedPara className={styles.description}>
-              In September 2021, I transitioned from an intern to a full-time
-              Software Engineer, marking a significant milestone in my
-              professional journey. In this capacity, I continued to harness my
-              skills in React JS, React Native. Channeling my energy into
-              creating impactful solutions for client projects. My commitment to
-              excellence extended beyond the codebase; I actively participated
-              in mentoring programs, fostering an environment of
-              knowledge-sharing and collaboration within the team. I embraced
-              the role of a mentor, guiding and sharing insights with interns
-              who, like me, were passionate about making a mark in the tech
-              landscape.
+              In September 2021, I transitioned from being an intern to becoming
+              a full-time Software Engineer, which was a significant milestone
+              in my career. In this role, I continued to use my skills in React
+              JS and React Native to create effective solutions for client
+              projects. I didn't just focus on writing code; I also took part in
+              mentoring programs to encourage knowledge-sharing and
+              collaboration within the team. I enjoyed being a mentor and shared
+              my insights with interns who, like me, were eager to make an
+              impact in the tech industry.
             </AnimatedPara>
 
             <AnimatedPara style={{ marginBottom: "10vh" }}>
@@ -114,13 +108,9 @@ export default function Page() {
             <AnimatedDiv>
               <p className={styles.subTitle}>What I do outside of work</p>
               <p className={styles.description}>
-                During my mornings, you'll find me navigating the world of gym
-                workouts, embracing the excitement of newfound fitness
-                endeavors. As A fresh face in the gym scene, I'm eager to
-                explore various exercises and cultivate a healthier lifestyle.
-                Currently captivated by the artistry of culinary delights, my
-                newfound interest in cooking has me experimenting with diverse
-                recipes and flavors.
+                In the mornings, I enjoy going to the gym to work out and
+                explore my newfound interest in fitness. My newfound interest in
+                cooking has me experimenting with diverse recipes and flavors.
               </p>
             </AnimatedDiv>
           </div>

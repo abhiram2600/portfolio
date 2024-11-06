@@ -10,16 +10,13 @@ export const AboutHome = () => {
     <div ref={ref}>
       <AnimatedDiv className={styles.page_home}>
         <p>
-          Hi, I'm Abhiram Kasturi, a dedicated Full Stack Web/ Cross-platform
-          Mobile Developer, weaving seamless online experiences by combining
-          business acumen, marketing insights, and robust design principles. As
-          an experienced software engineer, I bring a wealth of experience to
-          the digital landscape.
+          Hi, I am Abhiram Kasturi, a dedicated Full Stack Software Engineer.
+          With a Master's in Computer Science from Clemson University and
+          experience as a professional software engineer, I bring wealth of
+          knowledge in software Development.
           <br />
-          <br />
-          Currently, I'm on an exciting journey as a Master's student in
-          Computer Science at Clemson University, striving to deepen my
-          knowledge and contribute to the ever-evolving tech realm.
+          <br />I specialize in Python and Typescript and have strong skills in
+          AWS and Tableau. I'm actively seeking full-time opportunities.
         </p>
         <ALink
           style={{ marginTop: 15, fontSize: "3.5vh" }}

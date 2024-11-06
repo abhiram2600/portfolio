@@ -35,3 +35,5 @@ export const projectsData = [
     year: "Dec 2023",
   },
 ];
+
+export type projectDataType = typeof projectsData;

@@ -4,6 +4,7 @@ import ProjectCard from "./components/project_card";
 import styles from "./projects.module.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useNav } from "@/app/hooks/useNav";
+import { projectsData } from "./projects-data";
 
 export default function ProjectsHome() {
   const s_ref = useRef<HTMLDivElement | null>(null);
@@ -25,8 +26,8 @@ export default function ProjectsHome() {
     >
       <div className={styles.container}>
         <motion.div style={{ x: x }} className={styles.cards}>
-          {[1, 2, 3, 4, 5].map((_, idx) => {
-            return <ProjectCard index={idx} key={idx} />;
+          {projectsData.map((data, idx) => {
+            return <ProjectCard projectData={data} key={data.name} />;
           })}
         </motion.div>
       </div>

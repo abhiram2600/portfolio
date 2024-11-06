@@ -1,9 +1,5 @@
-My Personal Website
+### My Personal Website
 
+# Designed and developed by me.
 
-
-Todo:-
-
-- [ ] Add a certificates section
-- [ ] Add links to projects
-- [ ] Add a minimal form (maybe)
+# Tech Stack - NextJS, SCSS, Frame motion

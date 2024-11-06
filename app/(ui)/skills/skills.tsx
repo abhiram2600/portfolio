@@ -2,8 +2,7 @@ import styles from "./skills.module.scss";
 import Image from "next/image";
 import Card from "@/app/components/card/card";
 import { useNav } from "@/app/hooks/useNav";
-import { skillsData } from "./skills-data.js";
-import { CSSProperties } from "react";
+import { skillsData } from "./skills-data";
 
 function IndividualCard({ index }: { index: number }) {
   const { ref } = useNav({ mode: "title-change", title: "Skills" });

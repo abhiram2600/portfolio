@@ -2,15 +2,19 @@
 import { useNav } from "@/app/hooks/useNav";
 import { useRef } from "react";
 import styles from "./experience.module.scss";
-import { HorizontalScrollScreen } from "@/app/components/horizontal-scroll-screen/horizontal-scroll-screen";
 import { experienceData } from "./experience-data";
 import ExperinceCard from "./components/experience_card";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export default function Experience() {
   const screen_ref = useRef<HTMLDivElement | null>(null);
-
   const { ref } = useNav({ mode: "title-change", title: "Experience" });
 
+  const { scrollYProgress } = useScroll({
+    target: screen_ref,
+  });
+  const y_s = useSpring(scrollYProgress, { mass: 0.1 });
+  const x = useTransform(y_s, [0, 1], ["1%", "-76%"]);
   return (
     <div
       ref={(el) => {
@@ -20,16 +24,18 @@ export default function Experience() {
       className={styles.proj_h}
       id={"experience"}
     >
-      <HorizontalScrollScreen ref={screen_ref} end={"-75%"}>
-        {experienceData.map((data) => {
-          return (
-            <ExperinceCard
-              experienceData={data}
-              key={data.dutiesPerformed[0]}
-            />
-          );
-        })}
-      </HorizontalScrollScreen>
+      <div className={styles.container}>
+        <motion.div style={{ x: x }} className={styles.cards}>
+          {experienceData.map((data) => {
+            return (
+              <ExperinceCard
+                experienceData={data}
+                key={data.dutiesPerformed[0]}
+              />
+            );
+          })}
+        </motion.div>
+      </div>
     </div>
   );
 }

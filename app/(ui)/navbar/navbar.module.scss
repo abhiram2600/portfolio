@@ -12,7 +12,7 @@
 }
 .linkItems {
   display: flex;
-  gap: 15px;
+  gap: 30px;
   text-align: center;
 }
 
@@ -20,13 +20,8 @@
   .navbar {
     padding-top: 25px;
     font-size: 1.7vh;
-    //justify-content: center;
   }
   .linkItems {
-    gap: 7px; //justify-content: space-around;
+    gap: 7px;
   }
-
-  // .name {
-  //   display: none;
-  // }
 }

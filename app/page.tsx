@@ -5,8 +5,9 @@ import Homepage from "./(ui)/homepage/homepage";
 import Navbar from "./(ui)/navbar/navbar";
 import { GlobalContext } from "@/app/context/GlobalContext";
 import { AboutHome } from "./(ui)/about/about_home";
-import ProjectsHome from "./(ui)/projects/projects_home";
+import Projects from "./(ui)/projects/projects";
 import Skills from "./(ui)/skills/skills";
+import Experience from "./(ui)/experience/experience";
 
 export default function Home() {
   const [colorMode, setColorMode] = useState(false);
@@ -19,7 +20,8 @@ export default function Home() {
       <Navbar />
       <Homepage />
       <AboutHome />
-      <ProjectsHome />
+      <Experience />
+      <Projects />
       <Skills />
       <Contact />
     </GlobalContext.Provider>

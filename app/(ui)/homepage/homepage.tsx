@@ -52,6 +52,7 @@ export default function Homepage() {
           width={500}
           className={styles.image}
           alt="profile picture"
+          priority={true}
         />
       </motion.div>
     </div>

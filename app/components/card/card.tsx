@@ -1,4 +1,4 @@
-import { CSSProperties, ComponentProps } from "react";
+import { ComponentProps } from "react";
 import styles from "./card.module.scss";
 
 interface CardProps extends ComponentProps<"div"> {

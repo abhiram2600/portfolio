@@ -10,38 +10,33 @@
   padding: 3vh 3vh 10vh 3vh;
   text-align: justify;
   text-justify: justify;
-  width: 40vw;
+  width: 50vw;
 }
 
-.tech {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: 5px;
-  color: rgb(157, 157, 157);
-}
-
-.year {
-  margin-top: 3px;
-  color: #565656;
-  font-family: "Satoshi-Bold";
-}
-
-.title {
+.organization {
   font-weight: 700;
   font-size: 18px;
 }
 
-.description {
-  margin-top: 15px;
+.title {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.date {
+  margin-top: 5px;
+  font-size: 15px;
   color: #565656;
+  font-family: "Satoshi-Bold";
+}
+
+.duty {
+  margin-top: 5px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 600px) {
   .card {
     width: 80vw;
-  }
-  .tech {
-    width: 70vw;
   }
 }

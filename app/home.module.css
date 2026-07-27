@@ -1,0 +1,863 @@
+/* ============================================================
+   B-SIDE — analog editorial / a person as a vinyl LP
+   warm paper, rich ink, one molten accent.
+   ============================================================ */
+
+.page {
+  --paper: #f4efe6;
+  --paper-2: #ece4d6;
+  --ink: #16130f;
+  --ink-soft: #4a443a;
+  --ink-faint: #8a8173;
+  --accent: #ff4d1c;
+  --line: rgba(22, 19, 15, 0.14);
+  --line-strong: rgba(22, 19, 15, 0.32);
+
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  font-family: "Satoshi-Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: none;
+}
+
+/* paper grain + subtle vignette so the cream feels printed, not flat */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(244, 239, 230, 0) 55%
+    ),
+    radial-gradient(circle at 50% 120%, rgba(22, 19, 15, 0.1) 0%, rgba(244, 239, 230, 0) 60%);
+  mix-blend-mode: multiply;
+}
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap {
+  position: relative;
+  z-index: 3;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 56px);
+}
+
+/* ---------- custom cursor (record needle dot) ---------- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: normal;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  box-shadow: 0 0 0 1px rgba(22, 19, 15, 0.25);
+}
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+@media (hover: none) {
+  .page { cursor: auto; }
+  .cursor, .cursorRing { display: none; }
+}
+
+/* ---------- back link ---------- */
+.back {
+  position: fixed;
+  left: clamp(16px, 3vw, 36px);
+  bottom: clamp(16px, 3vw, 30px);
+  z-index: 50;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(244, 239, 230, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px -10px rgba(22, 19, 15, 0.4);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.back:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateX(-2px);
+}
+
+/* ---------- catalog strip (top meta bar) ---------- */
+.catalog {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--ink);
+}
+.catalog .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 7px;
+  vertical-align: middle;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+/* ============================================================
+   COVER
+   ============================================================ */
+.cover {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: center;
+  padding: clamp(36px, 6vw, 80px) 0 clamp(28px, 5vw, 60px);
+  border-bottom: 1.5px solid var(--ink);
+}
+@media (max-width: 880px) {
+  .cover {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+}
+
+.coverText { min-width: 0; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+.eyebrow span {
+  color: var(--ink-soft);
+}
+
+.artist {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(46px, 9.5vw, 132px);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-transform: uppercase;
+}
+.artist .ln { display: block; overflow: hidden; }
+.artist em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.album {
+  margin: clamp(18px, 2.5vw, 30px) 0 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.albumTitle {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: clamp(15px, 1.6vw, 20px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--ink);
+  padding: 6px 13px;
+  border-radius: 999px;
+}
+.albumMeta {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hero {
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  max-width: 30ch;
+  font-family: "Satoshi-Medium", sans-serif;
+  font-size: clamp(17px, 2.1vw, 25px);
+  line-height: 1.28;
+  color: var(--ink);
+}
+.heroAccent { color: var(--accent); }
+
+.status {
+  margin-top: clamp(18px, 2.4vw, 26px);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: var(--ink-soft);
+}
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2fbf6a;
+  box-shadow: 0 0 0 4px rgba(47, 191, 106, 0.18);
+}
+
+/* ---------- the vinyl record ---------- */
+.discWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1000px;
+}
+.discStage {
+  position: relative;
+  width: min(74vw, 440px);
+  aspect-ratio: 1;
+}
+
+/* sleeve shadow behind disc, peeking out */
+.sleeve {
+  position: absolute;
+  inset: 4% -2% -4% 6%;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--paper-2), #e0d6c4);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -28px rgba(22, 19, 15, 0.5);
+  transform: rotate(-3deg);
+}
+
+.disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      #1a1714 0px,
+      #1a1714 1px,
+      #0c0a08 2px,
+      #1c1815 3px
+    ),
+    radial-gradient(circle at 36% 30%, #2c2722 0%, #0a0907 70%);
+  box-shadow:
+    0 40px 80px -30px rgba(22, 19, 15, 0.7),
+    inset 0 0 60px rgba(0, 0, 0, 0.6);
+  will-change: transform;
+}
+/* glossy light sweep across the vinyl */
+.discSheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 210deg,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0.14) 40deg,
+    rgba(255, 255, 255, 0) 110deg,
+    rgba(255, 255, 255, 0) 250deg,
+    rgba(255, 255, 255, 0.08) 290deg,
+    rgba(255, 255, 255, 0) 340deg
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+/* the center label */
+.label {
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #ff6a3d, var(--accent) 60%, #d83a10 100%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 6px 18px -8px rgba(0, 0, 0, 0.6);
+}
+.labelInner {
+  transform: rotate(0deg);
+}
+.labelInitials {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 6.6vw, 46px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.labelSub {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-top: 5px;
+}
+/* spindle hole */
+.spindle {
+  position: absolute;
+  inset: calc(50% - 7px);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* tonearm */
+.arm {
+  position: absolute;
+  top: -6%;
+  right: -8%;
+  width: 50%;
+  height: 50%;
+  transform-origin: top right;
+  pointer-events: none;
+  z-index: 4;
+}
+.armBar {
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  width: 64%;
+  height: 6px;
+  background: linear-gradient(90deg, #2a2520, #6b6258);
+  border-radius: 3px;
+  transform-origin: right center;
+  transform: rotate(38deg);
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.5);
+}
+.armPivot {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a443a, #16130f);
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.6);
+}
+.armHead {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 16px;
+  height: 9px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   SIDE HEADERS
+   ============================================================ */
+.side {
+  padding: clamp(48px, 8vw, 96px) 0 0;
+}
+.sideHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: clamp(8px, 1.5vw, 18px);
+}
+.sideLabel {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 7vw, 86px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.sideLabel small {
+  display: block;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sideRt {
+  text-align: right;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ---------- tracklist ---------- */
+.tracks { display: flex; flex-direction: column; }
+
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: clamp(14px, 2.5vw, 34px);
+  align-items: start;
+  padding: clamp(20px, 2.6vw, 30px) 4px;
+  border-bottom: 1px solid var(--line);
+  cursor: none;
+  overflow: hidden;
+}
+/* molten wipe on hover */
+.track::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+.track:hover::before { transform: scaleY(1); }
+.track > * { position: relative; z-index: 1; transition: color 0.35s ease; }
+.track:hover .trackNum,
+.track:hover .trackTitle,
+.track:hover .trackLine,
+.track:hover .trackMeta,
+.track:hover .trackRole { color: var(--paper); }
+.track:hover .trackNum { color: var(--accent); }
+
+.trackNum {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.trackBody { min-width: 0; }
+.trackTitle {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.4vw, 40px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: uppercase;
+}
+.trackRole {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 8px 0 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.trackRole .sep { color: var(--ink-faint); }
+.trackLine {
+  font-family: "Satoshi-Medium", sans-serif;
+  font-size: clamp(14px, 1.5vw, 17px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin: 12px 0 0;
+  max-width: 60ch;
+}
+.trackMore {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  gap: 6px;
+}
+.trackMore li {
+  font-family: "Satoshi-Regular", monospace;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-faint);
+  padding-left: 16px;
+  position: relative;
+}
+.trackMore li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.trackRt {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.trackMeta {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.runtime {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .track {
+    grid-template-columns: 42px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .trackRt {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 14px;
+  }
+}
+
+/* tech tags for side B */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 14px 0 0;
+}
+.tag {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.track:hover .tag {
+  border-color: rgba(244, 239, 230, 0.35);
+  color: var(--paper);
+}
+
+/* ============================================================
+   LINER NOTES — marquee + cert
+   ============================================================ */
+.liner {
+  padding: clamp(48px, 8vw, 96px) 0 0;
+}
+.linerHead {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.marquee {
+  position: relative;
+  overflow: hidden;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: clamp(14px, 2vw, 22px) 0;
+  display: flex;
+}
+.marqueeTrack {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll 32s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marqueeTrack { animation-play-state: paused; }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marqueeItem {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.6vw, 46px);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  padding: 0 clamp(16px, 2vw, 30px);
+  color: var(--ink);
+}
+.marqueeItem .star { color: var(--accent); padding: 0 clamp(10px, 1.4vw, 20px); }
+
+.certRow {
+  margin-top: clamp(22px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.certBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: clamp(15px, 1.8vw, 21px);
+  letter-spacing: -0.01em;
+}
+.certSeal {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.certNote {
+  font-family: "Satoshi-Regular", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   CONTACT — SIDE B closing groove
+   ============================================================ */
+.contact {
+  padding: clamp(64px, 10vw, 130px) 0 clamp(80px, 10vw, 120px);
+  border-top: 1.5px solid var(--ink);
+  margin-top: clamp(48px, 8vw, 96px);
+}
+.contactEyebrow {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: clamp(16px, 2vw, 26px);
+}
+.pitch {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 6.4vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 16ch;
+}
+.pitch .accent { color: var(--accent); }
+
+.mailto {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 50px);
+  font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.6vw, 46px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  cursor: none;
+  position: relative;
+}
+.mailto::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mailto:hover::after { transform: scaleX(1); }
+.mailto:hover { color: var(--accent); }
+.mailto .arrow {
+  font-size: 0.6em;
+  transition: transform 0.3s ease;
+}
+.mailto:hover .arrow { transform: translate(4px, -4px); }
+
+.links {
+  margin-top: clamp(34px, 5vw, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 56px);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(22px, 3vw, 34px);
+}
+.linkCol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.linkCol .k {
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.linkCol .v {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: clamp(14px, 1.5vw, 17px);
+  color: var(--ink);
+  position: relative;
+  width: fit-content;
+  cursor: none;
+}
+.linkCol a.v::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.linkCol a.v:hover { color: var(--accent); }
+.linkCol a.v:hover::after { transform: scaleX(1); }
+
+.colophon {
+  margin-top: clamp(56px, 8vw, 90px);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: "Satoshi-Bold", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disc, .discSheen, .marqueeTrack, .dot, .statusDot { animation: none !important; }
+}
+
+/* ---------- draggable disc affordances ---------- */
+.disc {
+  cursor: none;
+  touch-action: none;
+}
+.discGrabbing {
+  cursor: none;
+}
+.cursorRingGrab {
+  width: 74px;
+  height: 74px;
+  border-color: var(--accent);
+  border-width: 2px;
+}
+.dragHint {
+  position: absolute;
+  left: 50%;
+  bottom: -9%;
+  transform: translateX(-50%);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ---------- NOW SPINNING — "these days" ---------- */
+.nowSpin {
+  padding-top: clamp(24px, 5vw, 60px);
+}
+.nowStatement {
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: clamp(2.1rem, 7.4vw, 5.6rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 18ch;
+  color: var(--ink);
+}
+.nowTool {
+  position: relative;
+  white-space: nowrap;
+  color: var(--accent);
+}
+.nowTool::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.09em;
+  background: var(--accent);
+  opacity: 0.45;
+  border-radius: 2px;
+}
+.nowPlus {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.nowSub {
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}

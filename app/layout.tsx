@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Abhiram Kasturi — Software Engineer",
   description:
     "Abhiram Kasturi — software engineer. i build the stuff you actually click. currently @ Linq.",
-  icons: { icon: "/images/portfolio.png" },
   openGraph: {
     title: "Abhiram Kasturi — Software Engineer",
     description: "i build the stuff you actually click. currently @ Linq.",

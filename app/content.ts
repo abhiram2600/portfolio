@@ -119,9 +119,8 @@ export const contact = {
   email: "abhiramkasturi10@gmail.com",
   github: "https://github.com/abhiram2600",
   githubLabel: "github.com/abhiram2600",
-  // NOTE: update slug if different
-  linkedin: "https://www.linkedin.com/in/abhiramkasturi",
-  linkedinLabel: "linkedin/abhiramkasturi",
+  linkedin: "https://www.linkedin.com/in/abhiram-kasturi/",
+  linkedinLabel: "linkedin/abhiram-kasturi",
   site: "https://abhiramkasturi.com",
   phone: "+18647654799",
   phoneLabel: "(864) 765-4799",

@@ -4,10 +4,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Abhiram Kasturi — Software Engineer",
   description:
-    "Abhiram Kasturi — software engineer. i build the stuff you actually click. currently @ Linq.",
+    "Software Engineer @ Linq. I build AI-native products and ship production systems end to end.",
   openGraph: {
     title: "Abhiram Kasturi — Software Engineer",
-    description: "i build the stuff you actually click. currently @ Linq.",
+    description:
+      "Software Engineer @ Linq. I build AI-native products and ship production systems end to end.",
     type: "website",
   },
 };
